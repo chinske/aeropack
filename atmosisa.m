@@ -75,6 +75,7 @@ for i = 1:length(height)
         
         if dTdh(j) == 0
             % isothermal layer
+            T(i) = T1;
             p(i) = p1.*exp(-(g./(R.*T(i))).*(h-h1));
             rho(i) = rho1.*exp(-(g./(R.*T(i))).*(h-h1));
         else
