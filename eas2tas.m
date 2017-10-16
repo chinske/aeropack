@@ -35,7 +35,7 @@ a0 = 340.269;
 % constants
 gam = 1.4;
 
-% compute equivalent airspeed
+% compute true airspeed
 ve = eas;
 v = ve.*sqrt(rho0./rho);
 tas = v;
