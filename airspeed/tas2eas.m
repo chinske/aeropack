@@ -16,7 +16,7 @@ function eas = tas2eas(tas,rho)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% TAS2EAS(TAS,RHO)
+% TAS2EAS(TAS,RHO) converts TAS to EAS.
 % 
 % Inputs
 % TAS: True Airspeed (m/s)
