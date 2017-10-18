@@ -27,6 +27,8 @@ function cas = tas2cas(tas,p,rho)
 % CAS: Calibrated Airspeed (m/s)
 % 
 % This function assumes subsonic flow and constant ratio of specific heats.
+% 
+% This function only accepts scalar inputs.
 
 % sea-level values of pressure, density, and speed of sound
 p0 = 1.01325E5;
@@ -45,7 +47,12 @@ x0 = v./2;
 x1 = v;
 
 % secant method
+% if input TAS = 0, set output CAS = 0, and do not execute secant method
 ea = 1;
+if v == 0
+    ea = 0;
+    x2 = 0;
+end
 while ea >= es
     % compute f(x0)
     qc = p0.*((1 + ((gam-1)./(2.*gam)).*(rho0./p0).*x0.^2).^ ...
