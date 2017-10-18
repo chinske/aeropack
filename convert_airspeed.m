@@ -52,3 +52,15 @@ function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
 % -------
 % V_OUT: Scalar or vector (same dimensions as V_IN) of airspeeds
 
+% check input
+if ~isvector(v_in)
+   error('Input V_IN must be a vector.')
+end
+
+% check input, convert to SI as required
+if nargin == 6
+   units = varargin{1};
+   if strcmpi(units,'knots')
+      v_in = v_in .* .514444;
+   end
+end
