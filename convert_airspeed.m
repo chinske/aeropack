@@ -54,13 +54,49 @@ function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
 
 % check input
 if ~isvector(v_in)
-   error('Input V_IN must be a vector.')
+  error('Input V_IN must be a vector.')
 end
 
 % check input, convert to SI as required
 if nargin == 6
+  units = varargin{1};
+  if strcmpi(units,'knots')
+    v_in = v_in .* .514444;
+  end
+end
+
+% execute airspeed conversion
+switch upper([type_in,type_out])
+  case ['CAS','EAS']
+    v_out = cas2eas(v_in,p,rho);
+
+  case ['CAS','TAS']
+    v_out = cas2tas(v_in,p,rho);
+
+  case ['EAS','CAS']
+    v_out = zeros(size(v_in));
+    for i = 1:length(v_in)
+      v_out(i) = eas2cas(v_in(i),p,rho);
+    end
+
+  case ['EAS','TAS']
+    v_out = eas2tas(v_in,rho);
+
+  case ['TAS','CAS']
+    v_out = zeros(size(v_in));
+    for i = 1:length(v_in)
+      v_out(i) = tas2cas(v_in(i),p,rho);
+    end
+
+  case ['TAS','EAS']
+    v_out = tas2eas(v_in,rho);
+
+end
+
+% check input, convert output as required
+if nargin == 6
    units = varargin{1};
    if strcmpi(units,'knots')
-      v_in = v_in .* .514444;
+     v_out = v_out .* 1.94384;
    end
 end
