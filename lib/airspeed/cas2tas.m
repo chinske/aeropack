@@ -49,4 +49,10 @@ qc = p0.*((1 + ((gam-1)./(2.*gam)).*(rho0./p0).*vc.^2).^ ...
 f = compfact(p,qc);
 f0 = compfact(p0,qc);
 v = vc.*(f./f0).*sqrt(rho0./rho);
-tas = v;
+
+% if input CAS = 0, set output TAS = 0
+if cas == 0
+    tas = 0;
+else
+    tas = v;
+end
