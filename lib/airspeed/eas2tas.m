@@ -1,4 +1,4 @@
-function tas = eas2tas(eas,T)
+function tas = eas2tas(eas,p,T)
 % EAS2TAS Convert EAS to TAS
 % Christopher Chinske
 % 10/15/17
@@ -16,10 +16,11 @@ function tas = eas2tas(eas,T)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% EAS2TAS(EAS,T) converts EAS to TAS.
+% EAS2TAS(EAS,P,T) converts EAS to TAS.
 % 
 % Inputs
 % EAS: Equivalent Airspeed (m/s)
+% P: Static Pressure (Pa)
 % T: Temperature (K)
 % 
 % Outputs

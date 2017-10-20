@@ -32,5 +32,5 @@ function cas = eas2cas(eas,p,T)
 
 % compute calibrated airspeed
 % EAS -> TAS -> CAS
-tas = eas2tas(eas,T);
+tas = eas2tas(eas,p,T);
 cas = tas2cas(tas,p,T);

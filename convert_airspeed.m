@@ -80,7 +80,7 @@ switch upper([type_in,type_out])
         end
         
     case ['EAS','TAS']
-        v_out = eas2tas(v_in,T);
+        v_out = eas2tas(v_in,p,T);
         
     case ['TAS','CAS']
         v_out = zeros(size(v_in));
@@ -89,7 +89,7 @@ switch upper([type_in,type_out])
         end
         
     case ['TAS','EAS']
-        v_out = tas2eas(v_in,T);
+        v_out = tas2eas(v_in,p,T);
         
 end
 

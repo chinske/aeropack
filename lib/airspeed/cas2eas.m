@@ -31,4 +31,4 @@ function eas = cas2eas(cas,p,T)
 % compute equivalent airspeed
 % CAS -> TAS -> EAS
 tas = cas2tas(cas,p,T);
-eas = tas2eas(tas,T);
+eas = tas2eas(tas,p,T);
