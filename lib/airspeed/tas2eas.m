@@ -1,4 +1,4 @@
-function eas = tas2eas(tas,rho)
+function eas = tas2eas(tas,T)
 % TAS2EAS Convert TAS to EAS
 % Christopher Chinske
 % 10/15/17
@@ -16,11 +16,11 @@ function eas = tas2eas(tas,rho)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% TAS2EAS(TAS,RHO) converts TAS to EAS.
+% TAS2EAS(TAS,T) converts TAS to EAS.
 % 
 % Inputs
 % TAS: True Airspeed (m/s)
-% RHO: Density (kg/m^3)
+% T: Temperature (K)
 % 
 % Outputs
 % EAS: Equivalent Airspeed (m/s)
@@ -33,7 +33,11 @@ rho0 = 1.2250;
 a0 = 340.269;
 
 % constants
+R = 287;
 gam = 1.4;
+
+% compute density
+rho = p./(R.*T);
 
 % compute equivalent airspeed
 v = tas;

@@ -1,4 +1,4 @@
-function cas = tas2cas(tas,p,rho)
+function cas = tas2cas(tas,p,T)
 % TAS2CAS Convert TAS to CAS
 % Christopher Chinske
 % 10/17/17
@@ -16,12 +16,12 @@ function cas = tas2cas(tas,p,rho)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% TAS2CAS(TAS,P,RHO) converts TAS to CAS.
+% TAS2CAS(TAS,P,T) converts TAS to CAS.
 % 
 % Inputs
 % TAS: True Airspeed (m/s)
 % P: Static Pressure (Pa)
-% RHO: Density (kg/m^3)
+% T: Temperature (K)
 % 
 % Outputs
 % CAS: Calibrated Airspeed (m/s)
@@ -36,7 +36,11 @@ rho0 = 1.2250;
 a0 = 340.269;
 
 % constants
+R = 287;
 gam = 1.4;
+
+% compute density
+rho = p./(R.*T);
 
 % termination criteria
 es = 5E-5;

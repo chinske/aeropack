@@ -1,4 +1,4 @@
-function cas = eas2cas(eas,p,rho)
+function cas = eas2cas(eas,p,T)
 % EAS2CAS Convert EAS to CAS
 % Christopher Chinske
 % 10/17/17
@@ -16,12 +16,12 @@ function cas = eas2cas(eas,p,rho)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% EAS2CAS(EAS,P,RHO) converts EAS to CAS.
+% EAS2CAS(EAS,P,T) converts EAS to CAS.
 % 
 % Inputs
 % EAS: Equivalent Airspeed (m/s)
 % P: Static Pressure (Pa)
-% RHO: Density (kg/m^3)
+% T: Temperature (K)
 % 
 % Outputs
 % CAS: Calibrated Airspeed (m/s)
@@ -32,5 +32,5 @@ function cas = eas2cas(eas,p,rho)
 
 % compute calibrated airspeed
 % EAS -> TAS -> CAS
-tas = eas2tas(eas,rho);
-cas = tas2cas(tas,p,rho);
+tas = eas2tas(eas,T);
+cas = tas2cas(tas,p,T);

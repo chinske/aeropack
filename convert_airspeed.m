@@ -1,4 +1,4 @@
-function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
+function v_out = convert_airspeed(v_in,type_in,type_out,p,T,varargin)
 % CONVERT_AIRSPEED Convert Between CAS, EAS, and TAS
 % Christopher Chinske
 % 10/17/17
@@ -16,7 +16,7 @@ function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 %
-% CONVERT_AIRSPEED(V_IN, TYPE_IN, TYPE_OUT, P, RHO) converts the input
+% CONVERT_AIRSPEED(V_IN, TYPE_IN, TYPE_OUT, P, T) converts the input
 % airspeed V_IN from TYPE_IN to TYPE_OUT.
 %
 % CONVERT_AIRSPEED(..., UNITS) converts between airspeeds expressed in
@@ -37,7 +37,7 @@ function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
 %   'TAS' - True Airspeed
 %
 % P: Static Pressure (Pa)
-% RHO: Density (kg/m^3)
+% T: Temperature (K)
 %
 % UNITS: String specifying units of airspeed
 %
@@ -46,7 +46,7 @@ function v_out = convert_airspeed(v_in,type_in,type_out,p,rho,varargin)
 %   'knots'
 %
 % Note: Notwithstanding the units of airspeed specified by the string
-% UNITS, P and RHO must be in Pa and kg/m^3, respectively.
+% UNITS, P and T must be in Pa and K, respectively.
 %
 % Outputs
 % -------
@@ -68,28 +68,28 @@ end
 % execute airspeed conversion
 switch upper([type_in,type_out])
     case ['CAS','EAS']
-        v_out = cas2eas(v_in,p,rho);
+        v_out = cas2eas(v_in,p,T);
         
     case ['CAS','TAS']
-        v_out = cas2tas(v_in,p,rho);
+        v_out = cas2tas(v_in,p,T);
         
     case ['EAS','CAS']
         v_out = zeros(size(v_in));
         for i = 1:length(v_in)
-            v_out(i) = eas2cas(v_in(i),p,rho);
+            v_out(i) = eas2cas(v_in(i),p,T);
         end
         
     case ['EAS','TAS']
-        v_out = eas2tas(v_in,rho);
+        v_out = eas2tas(v_in,T);
         
     case ['TAS','CAS']
         v_out = zeros(size(v_in));
         for i = 1:length(v_in)
-            v_out(i) = tas2cas(v_in(i),p,rho);
+            v_out(i) = tas2cas(v_in(i),p,T);
         end
         
     case ['TAS','EAS']
-        v_out = tas2eas(v_in,rho);
+        v_out = tas2eas(v_in,T);
         
 end
 
