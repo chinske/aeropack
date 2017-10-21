@@ -262,6 +262,101 @@ disp(' ')
 % --------------------------------------------------
 % --------------------------------------------------
 % Test 4
+% Test v_in = [0,0,0].
+% --------------------------------------------------
+% --------------------------------------------------
+disp('Testing v_in = [0,0,0]...')
+disp(' ')
+
+disp('CAS -> EAS')
+try
+    v_out = convert_airspeed([0,0,0],'cas','eas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp('CAS -> TAS')
+try
+    v_out = convert_airspeed([0,0,0],'cas','tas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp('EAS -> CAS')
+try
+    v_out = convert_airspeed([0,0,0],'eas','cas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp('EAS -> TAS')
+try
+    v_out = convert_airspeed([0,0,0],'eas','tas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp('TAS -> CAS')
+try
+    v_out = convert_airspeed([0,0,0],'tas','cas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp('TAS -> EAS')
+try
+    v_out = convert_airspeed([0,0,0],'tas','eas',p,T);
+    if isequal(v_out,[0,0,0])
+        disp('****************************** PASS')
+    else
+        disp('****************************** FAIL')
+        nfail = nfail + 1;
+    end
+catch
+    disp('****************************** FAIL')
+    nfail = nfail + 1;
+end
+
+disp(' ')
+
+% --------------------------------------------------
+% --------------------------------------------------
+% Test 5
 % Test input in knots.
 % --------------------------------------------------
 % --------------------------------------------------
