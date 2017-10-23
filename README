@@ -1,0 +1,16 @@
+AEROPACK
+
+Overview
+--------
+
+AEROPACK is a library of MATLAB functions for aerospace analysis.
+
+Installation
+------------
+
+To install AEROPACK, add the following directories to your MATLAB
+path.
+
+  aeropack
+  aeropack/lib (and all subdirectories)
+
