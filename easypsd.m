@@ -1,4 +1,4 @@
-function easypsd(t,x)
+function [pxx,f] = easypsd(t,x,plotflag)
 % EASYPSD Easy Power Spectral Density
 % Copyright 2022 Christopher Chinske
 % This program is free software: you can redistribute it and/or modify
@@ -16,11 +16,13 @@ function easypsd(t,x)
 % 
 % Requires: Signal Processing Toolbox
 % 
-% EASYPSD(T,X) uses PWELCH to compute the power spectral density (PSD)
-% estimate of the signal X(T).  The function assumes a constant sample
-% rate.
+% [PXX,F] = EASYPSD(T,X,PLOTFLAG) uses PWELCH to compute the power spectral
+% density (PSD) estimate of the signal X(T).  The function assumes a
+% constant sample rate.  The function returns the PSD estimate PXX (dB/Hz)
+% and a frequency vector F (Hz).
 % 
-% The function plots the PSD in the current figure window.
+% If PLOTFLAG == 1, the function plots the PSD in the current figure
+% window.
 
 % compute the sampling frequency (i.e., sample rate)
 n = length(t);
@@ -28,8 +30,11 @@ fs = (n-1)./(t(length(t)) - t(1));
 
 % use PWELCH
 [pxx,f] = pwelch(x,[],[],[],fs);
+pxx = 10*log10(pxx);
 
 % plot
-plot(f,10*log10(pxx));
-xlabel('Frequency (Hz)')
-ylabel('PSD (dB/Hz)')
+if plotflag == 1
+    plot(f,pxx);
+    xlabel('Frequency (Hz)')
+    ylabel('PSD (dB/Hz)')
+end
