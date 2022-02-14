@@ -1,4 +1,4 @@
-function [f,P1] = pspec(t,x)
+function [f,P1] = pspec(t,x,plotflag)
 % PSPEC Power Spectrum
 % Copyright 2022 Christopher Chinske
 % This program is free software: you can redistribute it and/or modify
@@ -14,10 +14,11 @@ function [f,P1] = pspec(t,x)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% [F,P1] = pspec(T,X) computes the single-sided power spectrum of the
-% signal X(T).  The function assumes a constant sample rate.
+% [F,P1] = pspec(T,X,PLOTFLAG) computes the single-sided power spectrum of
+% the signal X(T).  The function assumes a constant sample rate.
 % 
-% The function plots the power spectrum in the current figure window.
+% If PLOTFLAG == 1, the function plots the power spectrum in the current
+% figure window.
 
 % compute the sampling frequency (i.e., sample rate)
 n = length(t);
@@ -41,6 +42,8 @@ P1(2:end-1) = 4*P1(2:end-1);
 f = fs*(0:floor(n/2))/n;
 
 % plot
-plot(f,P1)
-xlabel('Frequency (Hz)')
-ylabel('Power')
+if plotflag == 1
+    plot(f,P1)
+    xlabel('Frequency (Hz)')
+    ylabel('Power')
+end
