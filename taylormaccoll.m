@@ -1,5 +1,5 @@
 function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
-% TAYLORMACCOLL Taylor-Maccoll Flow Around a Cone
+% TAYLORMACCOLL Taylor-Maccoll Supersonic Flow Around a Cone
 % 
 % Copyright 2022 Christopher Chinske
 % 
