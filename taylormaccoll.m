@@ -67,17 +67,22 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 % convert deltac to radians
 deltac = deltac.*pi./180;
 
-% assume a first trial value for the shock wave angle
-alpha1 = asin(1./M1);
-eps_init = deltac + alpha1./2;
-
 % find the shock wave angle corresponding to input deltac
-eps = fminsearch(@(eps) tm_objfun(eps,gam,M1,deltac),eps_init);
+% slowly apporach input M1 from above, updating optimization bounds
+eps_min = deltac;
+M1_domain = logspace(M1,10*M1);
+M1_domain = log10(M1_domain);
+M1_domain = fliplr(M1_domain);
+for i = 1:length(M1_domain)
+    eps = fminbnd(@(eps) tm_objfun(eps,gam,M1_domain(i),deltac), ...
+        eps_min,80*pi/180);
+    eps_min = eps;
+end
 
 % --------------------------------------------------
 % use converged shock wave angle to compute properties at surface of cone
 [velbs_star,p2p1,r1r2] = tm_shock(eps,gam,M1);
-[psi,velb_star] = tm_integration(eps,gam,velbs_star);
+[psi,velb_star] = tm_integration_ha(eps,gam,velbs_star);
 
 % transform velocity into 2-D components
 u_star = velb_star(:,1).*cos(psi) - velb_star(:,2).*sin(psi);
@@ -150,8 +155,21 @@ end
 function [psi,vel] = tm_integration(eps,gam,vels)
 % TM_INTEGRATION Taylor-Maccoll Integration
 options = odeset('Events',@tm_cone_surface_event);
-[psi,vel] = ode45(@(psi,vel) tm_odefun(psi,vel,gam), ...
+[psi,vel] = ode23tb(@(psi,vel) tm_odefun(psi,vel,gam), ...
     [eps 0], vels, options);
+end
+
+function [psi,vel] = tm_integration_ha(eps,gam,vels)
+% TM_INTEGRATION_HA Taylor-Maccoll Integration High Accuracy
+options = odeset('Events',@tm_cone_surface_event);
+if exist('ode78')==2
+    [psi,vel] = ode78(@(psi,vel) tm_odefun(psi,vel,gam), ...
+        [eps 0], vels, options);
+else
+    disp('ODE78 does not exist; using ODE45.  Accuracy may be reduced.')
+    [psi,vel] = ode45(@(psi,vel) tm_odefun(psi,vel,gam), ...
+        [eps 0], vels, options);
+end
 end
 
 function dvel_dpsi = tm_odefun(psi,vel,gam)
