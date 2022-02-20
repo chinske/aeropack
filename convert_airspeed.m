@@ -1,8 +1,8 @@
 function v_out = convert_airspeed(v_in,type_in,type_out,p,T,varargin)
 % CONVERT_AIRSPEED Convert Between CAS, EAS, and TAS
-% Christopher Chinske
-% 10/17/17
+% 
 % Copyright 2017 Christopher Chinske
+% 
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or

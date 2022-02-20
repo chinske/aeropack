@@ -1,8 +1,8 @@
 function cas = eas2cas(eas,p,T)
 % EAS2CAS Convert EAS to CAS
-% Christopher Chinske
-% 10/17/17
+% 
 % Copyright 2017 Christopher Chinske
+% 
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
