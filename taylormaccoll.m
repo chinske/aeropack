@@ -68,7 +68,7 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 deltac = deltac.*pi./180;
 
 % find the shock wave angle corresponding to input deltac
-% slowly apporach input M1 from above, updating optimization bounds
+% slowly approach input M1 from above, updating optimization bounds
 eps_min = deltac;
 M1_domain = logspace(M1,10*M1);
 M1_domain = log10(M1_domain);
