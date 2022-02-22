@@ -34,7 +34,7 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 % 
 % References
 % ----------
-% [1] Zucrow, Maurice J., and Joe D. Hoffmann. 1977. Gas Dynamics. 2:
+% [1] Zucrow, Maurice J., and Joe D. Hoffman. 1977. Gas Dynamics. 2:
 % Multidimensional Flow. New York: Wiley.
 
 % --------------------------------------------------
