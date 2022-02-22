@@ -16,9 +16,9 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% [EPS,PCP1,RCR1] = TAYLORMACCOLL(GAMMA,M1,DELTAC) solves the
-% Taylor-Maccoll problem of supersonic flow around an infinite axisymmetric
-% cone at zero angle of attack, assuming perfect gas.
+% [EPS,PCP1,RCR1] = TAYLORMACCOLL(GAM,M1,DELTAC) solves the Taylor-Maccoll
+% problem of supersonic flow around an infinite axisymmetric cone at zero
+% angle of attack, assuming perfect gas.
 % 
 % Inputs
 % ------
