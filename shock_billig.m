@@ -18,7 +18,7 @@ function x = shock_billig(btype,R,gam,M1,deltac,y)
 % 
 % X = SHOCK_BILLIG(BTYPE,R,GAM,M1,DELTAC,Y) returns the x-coordinates of
 % the hyperbolic shock shape for the input y-coordinates as given by
-% Billig's correlation.
+% Billig's correlation for hypersonic shock-wave shapes.
 % 
 % Inputs
 % ------
