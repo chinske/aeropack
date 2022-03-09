@@ -27,6 +27,7 @@ function x = shock_billig(btype,R,gam,M1,deltac,y)
 % GAM    : Ratio of specific heats
 % M1     : Free stream Mach number
 % DELTAC : Cone half-angle (deg)
+% Y      : Vector of y-coordinates
 % 
 % References 
 % ----------
