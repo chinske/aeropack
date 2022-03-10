@@ -16,9 +16,9 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 % You should have received a copy of the GNU General Public License
 % along with this program.  If not, see <http://www.gnu.org/licenses/>.
 % 
-% [EPS,PCP1,RCR1] = TAYLORMACCOLL(GAMMA,M1,DELTAC) solves the
-% Taylor-Maccoll problem of supersonic flow around an infinite axisymmetric
-% cone at zero angle of attack, assuming perfect gas.
+% [EPS,PCP1,RCR1] = TAYLORMACCOLL(GAM,M1,DELTAC) solves the Taylor-Maccoll
+% problem of supersonic flow around an infinite axisymmetric cone at zero
+% angle of attack, assuming perfect gas.
 % 
 % Inputs
 % ------
@@ -34,7 +34,7 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 % 
 % References
 % ----------
-% [1] Zucrow, Maurice J., and Joe D. Hoffmann. 1977. Gas Dynamics. 2:
+% [1] Zucrow, Maurice J., and Joe D. Hoffman. 1977. Gas Dynamics. 2:
 % Multidimensional Flow. New York: Wiley.
 
 % --------------------------------------------------
@@ -68,7 +68,7 @@ function [eps,pcp1,rcr1] = taylormaccoll(gam,M1,deltac)
 deltac = deltac.*pi./180;
 
 % find the shock wave angle corresponding to input deltac
-% slowly apporach input M1 from above, updating optimization bounds
+% slowly approach input M1 from above, updating optimization bounds
 eps_min = deltac;
 M1_domain = logspace(M1,10*M1);
 M1_domain = log10(M1_domain);
