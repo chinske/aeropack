@@ -25,7 +25,7 @@ function r_rt = shock_klaimon(gamma,M,x_rt)
 % ------
 % GAMMA : Cone half-angle (deg)
 % M     : Free stream Mach number
-% X_RT  : Vector of x-coordinates normalized by conical base radius rt
+% X_RT  : Vector of x-coordinates normalized by nose tip radius rt
 % 
 % References
 % ----------
