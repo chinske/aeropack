@@ -2,7 +2,7 @@ function [p2p1,r2r1,T2T1,p02p01,r02r01,M2M1] = normalshock(gamma,M1)
 % NORMALSHOCK Normal Shock Property Ratios
 % 
 % Copyright 2022 Christopher Chinske
-
+% 
 % This program is free software: you can redistribute it and/or modify
 % it under the terms of the GNU General Public License as published by
 % the Free Software Foundation, either version 3 of the License, or
